@@ -4,20 +4,34 @@ import { Outlet, Link } from 'react-router-dom'
 import { useQuiz } from './ContextUtils'
 
 function PageHeader() {
-    const { difficulty, setDifficulty, numberOfQuestions, setNumberOfQuestions, started, setStarted } = useQuiz()
+    const { difficulty, setDifficulty,
+        numberOfQuestions, setNumberOfQuestions,
+        started, setStarted,
+        correctAnswerCount, setCorrectAnswerCount,
+        incorrectAnswerCount, setIncorrectAnswerCount,
+        clearScore }
+        = useQuiz()
 
     return (
         <>
             <div className='pageHeader'>
-                <h1> Trivia Time<br /> </h1>
-                <label htmlFor='selectDifficulty'> Select Difficulty: </label>
-                <select name='selectDifficulty' id='selectDifficulty' value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
-                    <option value='easy'>Easy</option>
-                    <option value='medium'>Medium</option>
-                    <option value='hard'>Hard</option>
-                </select>
-                <input placeholder='number of questions' value={numberOfQuestions} onChange={(e) => setNumberOfQuestions(e.target.value)} />
+                <div className='modifiers'>
+                    <label htmlFor='selectDifficulty'> Select Difficulty: </label>
+                    <select name='selectDifficulty' id='selectDifficulty' value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+                        <option value='easy'>Easy</option>
+                        <option value='medium'>Medium</option>
+                        <option value='hard'>Hard</option>
+                    </select>
+                    <p> Number of Questions: </p>
+                    <input placeholder='number of questions' value={numberOfQuestions} onChange={(e) => setNumberOfQuestions(e.target.value)} />
+                </div>
                 <button onClick={() => setStarted(true)}> Start Trivia! </button>
+                <div className='scoreCard'>
+                    <p> Correct: {correctAnswerCount}</p>
+                    <p> Incorrect: {incorrectAnswerCount} </p>
+                    <p> Score: % {correctAnswerCount / numberOfQuestions * 100}</p>
+                    <button onClick={clearScore}> Clear Score </button>
+                </div>
             </div>
             <Outlet />
         </>

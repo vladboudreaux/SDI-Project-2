@@ -1,11 +1,23 @@
+body {
+  background-color: rgb(118, 118, 174);
+}
+
 .pageHeader {
+  display: flex;
   border: 5px solid black;
   text-transform: capitalize;
   justify-content: center;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10%;
+}
+
+.pageTitle {
+  border: 5px solid purple;
+  justify-content: center;
+}
+
+.scoreCard {
+  border: 5px solid gold;
 }
 
 .questionsBox {
@@ -16,17 +28,52 @@
   align-items: center;
 }
 
-.questionsBox button {
-  padding: 2px;
+.questionsBox ol {
+  font-size: large;
+  justify-content: center;
+  list-style-position: inside;
+  padding: 0;
+  text-align: center;
 }
 
+.questionsBox li {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
 .answersBox {
-  border: 5px solid red;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
 }
 
-.question {
-  border: 5px solid blue;
+
+
+
+.questionsBox button {
+  background-color: #FFFFFF;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s, -ms-transform .1s, -webkit-transform .1s, transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
 }
