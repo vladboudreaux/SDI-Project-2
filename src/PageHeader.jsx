@@ -32,7 +32,10 @@ function PageHeader() {
                     <p> Incorrect: {incorrectAnswerCount} </p>
                     <p> Total: {totalQuestions}</p>
                     <p> Score: % {totalQuestions > 0 ? (correctAnswerCount / totalQuestions * 100).toFixed(1) : 0}</p>
-                    <button onClick={clearScore}> Clear Score </button>
+                    <button onClick={() => {
+                        clearScore()
+                        window.location.reload()
+                    }}> Clear Score </button>
                 </div>
             </div>
             <Outlet />
