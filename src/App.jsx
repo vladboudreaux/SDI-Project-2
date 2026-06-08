@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import './App.css'
 import PageHeader from './PageHeader'
 import HomePage from './HomePage'
+import { QuizProvider } from './ContextUtils'
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <QuizProvider>
+      <RouterProvider router={router} />
+    </QuizProvider>
+  )
 }
 
 export default App

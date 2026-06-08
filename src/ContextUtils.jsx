@@ -14,6 +14,10 @@ export function QuizProvider({ children }) {
         () => parseInt(localStorage.getItem('incorrectAnswerCount')) || 0
     )
 
+    const [totalQuestions, setTotalQuestions] = useState(
+        () => parseInt(localStorage.getItem('totalQuestions')) || 0
+    )
+
     useEffect(() => {
         localStorage.setItem('incorrectAnswerCount', incorrectAnswerCount)
     }, [incorrectAnswerCount])
@@ -22,11 +26,17 @@ export function QuizProvider({ children }) {
         localStorage.setItem('correctAnswerCount', correctAnswerCount)
     }, [correctAnswerCount])
 
+    useEffect(() => {
+        localStorage.setItem('totalQuestions', totalQuestions)
+    }, [totalQuestions])
+
     const clearScore = () => {
         setCorrectAnswerCount(0)
         setIncorrectAnswerCount(0)
+        setTotalQuestions(0)
         localStorage.removeItem('correctAnswerCount')
         localStorage.removeItem('incorrectAnswerCount')
+        localStorage.removeItem('totalQuestions')
     }
 
     const triviaLogic = (answer, correctAnswer) => {
@@ -47,7 +57,8 @@ export function QuizProvider({ children }) {
             correctAnswerCount, setCorrectAnswerCount,
             incorrectAnswerCount, setIncorrectAnswerCount,
             triviaLogic,
-            clearScore
+            clearScore,
+            totalQuestions, setTotalQuestions
         }}>
             {children}
         </QuizContext.Provider>

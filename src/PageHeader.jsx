@@ -9,7 +9,8 @@ function PageHeader() {
         started, setStarted,
         correctAnswerCount, setCorrectAnswerCount,
         incorrectAnswerCount, setIncorrectAnswerCount,
-        clearScore }
+        clearScore,
+        totalQuestions }
         = useQuiz()
 
     return (
@@ -29,7 +30,8 @@ function PageHeader() {
                 <div className='scoreCard'>
                     <p> Correct: {correctAnswerCount}</p>
                     <p> Incorrect: {incorrectAnswerCount} </p>
-                    <p> Score: % {correctAnswerCount / numberOfQuestions * 100}</p>
+                    <p> Total: {totalQuestions}</p>
+                    <p> Score: % {totalQuestions > 0 ? (correctAnswerCount / totalQuestions * 100).toFixed(1) : 0}</p>
                     <button onClick={clearScore}> Clear Score </button>
                 </div>
             </div>
