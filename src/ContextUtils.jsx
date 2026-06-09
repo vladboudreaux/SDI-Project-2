@@ -18,6 +18,30 @@ export function QuizProvider({ children }) {
         () => parseInt(localStorage.getItem('totalQuestions')) || 0
     )
 
+    const [questions, setQuestions] = useState(
+        () => JSON.parse(localStorage.getItem('questions')) || []
+    )
+
+    const [selectedAnswers, setSelectedAnswers] = useState(
+        () => JSON.parse(localStorage.getItem('selectedAnswers')) || {}
+    )
+
+    const [shuffledAnswers, setShuffledAnswers] = useState(
+        () => JSON.parse(localStorage.getItem('shuffledAnswers')) || []
+    )
+
+    useEffect(() => {
+        localStorage.setItem('questions', JSON.stringify(questions))
+    }, [questions])
+
+    useEffect(() => {
+        localStorage.setItem('selectedAnswers', JSON.stringify(selectedAnswers))
+    }, [selectedAnswers])
+
+    useEffect(() => {
+        localStorage.setItem('shuffledAnswers', JSON.stringify(shuffledAnswers))
+    }, [shuffledAnswers])
+
     useEffect(() => {
         localStorage.setItem('incorrectAnswerCount', incorrectAnswerCount)
     }, [incorrectAnswerCount])
@@ -34,9 +58,15 @@ export function QuizProvider({ children }) {
         setCorrectAnswerCount(0)
         setIncorrectAnswerCount(0)
         setTotalQuestions(0)
+        setQuestions([])
+        setSelectedAnswers({})
+        setShuffledAnswers([])
         localStorage.removeItem('correctAnswerCount')
         localStorage.removeItem('incorrectAnswerCount')
         localStorage.removeItem('totalQuestions')
+        localStorage.removeItem('questions')
+        localStorage.removeItem('selectedAnswers')
+        localStorage.removeItem('shuffledAnswers')
     }
 
     const triviaLogic = (answer, correctAnswer) => {
@@ -58,7 +88,10 @@ export function QuizProvider({ children }) {
             incorrectAnswerCount, setIncorrectAnswerCount,
             triviaLogic,
             clearScore,
-            totalQuestions, setTotalQuestions
+            totalQuestions, setTotalQuestions,
+            questions, setQuestions,
+            selectedAnswers, setSelectedAnswers,
+            shuffledAnswers, setShuffledAnswers
         }}>
             {children}
         </QuizContext.Provider>

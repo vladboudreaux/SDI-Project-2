@@ -4,13 +4,15 @@ import { Outlet, Link } from 'react-router-dom'
 import { handleResponse, useQuiz } from './ContextUtils'
 
 function HomePage() {
-    const { difficulty, numberOfQuestions, started, setStarted, triviaLogic, setTotalQuestions } = useQuiz()
+    const {
+        difficulty, numberOfQuestions, started, setStarted,
+        triviaLogic, setTotalQuestions, questions,
+        setQuestions, selectedAnswers, setSelectedAnswers,
+        shuffledAnswers, setShuffledAnswers } = useQuiz()
 
     const url = `https://opentdb.com/api.php?amount=${numberOfQuestions}&difficulty=${difficulty}`
 
-    const [questions, setQuestions] = useState([])
-    const [selectedAnswers, setSelectedAnswers] = useState({})
-    const [shuffledAnswers, setShuffledAnswers] = useState([])
+
 
     useEffect(() => {
         if (!started) return
@@ -52,7 +54,7 @@ function HomePage() {
                             <div key={index}>
                                 <li className='question'><strong>{decode(q.question)}</strong></li>
                                 <div className='answersBox'>
-                                    {shuffledAnswers[index]?.map((answer, i) => (
+                                    {shuffledAnswers[index].map((answer, i) => (
                                         <button
                                             key={i}
                                             onClick={() => handleAnswer(answer, q.correct_answer, index)}

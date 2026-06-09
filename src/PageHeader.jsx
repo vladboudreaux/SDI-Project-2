@@ -26,7 +26,9 @@ function PageHeader() {
                     <p> Number of Questions: </p>
                     <input placeholder='number of questions' value={numberOfQuestions} onChange={(e) => setNumberOfQuestions(e.target.value)} />
                 </div>
-                <button onClick={() => setStarted(true)}> Start Trivia! </button>
+                <div className='startButton'>
+                    <button onClick={() => setStarted(true)}> Start Trivia! </button>
+                </div>
                 <div className='scoreCard'>
                     <p> Correct: {correctAnswerCount}</p>
                     <p> Incorrect: {incorrectAnswerCount} </p>

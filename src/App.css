@@ -1,10 +1,9 @@
 body {
-  background-color: rgb(118, 118, 174);
+  background-color: #557768;
 }
 
 .pageHeader {
   display: flex;
-  border: 5px solid black;
   text-transform: capitalize;
   justify-content: center;
   align-items: center;
@@ -16,12 +15,39 @@ body {
   justify-content: center;
 }
 
-.scoreCard {
-  border: 5px solid gold;
+.scoreCard,
+.modifiers {
+  background-color: #bed1c7;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s, -ms-transform .1s, -webkit-transform .1s, transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  flex: 1;
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.modifiers {
+  min-height: 230px;
 }
 
 .questionsBox {
-  border: 5px solid green;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -37,7 +63,7 @@ body {
 }
 
 .questionsBox li {
-  padding: 10px;
+  padding: 20px;
   font-size: 18px;
   font-weight: 600;
 }
@@ -50,10 +76,7 @@ body {
   justify-content: center;
 }
 
-
-
-
-.questionsBox button {
+button {
   background-color: #FFFFFF;
   border: 1px solid #222222;
   border-radius: 8px;
