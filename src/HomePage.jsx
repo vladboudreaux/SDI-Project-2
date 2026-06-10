@@ -20,26 +20,29 @@ function HomePage() {
         fetch(url)
             .then(handleResponse)
             .then(json => {
-                setQuestions(json.results)
-                setSelectedAnswers({})
+                setQuestions(prev => [...json.results, ...prev])
+                // setSelectedAnswers({})
                 setTotalQuestions(prev => prev + json.results.length)
-                setShuffledAnswers(json.results.map(q =>
-                    [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5)
-                ))
+                setShuffledAnswers(prev => [
+                    ...json.results.map(q =>
+                        [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5)
+                    ), ...prev
+                ])
             })
             .finally(() => setStarted(false))
     }, [started])
 
-    const handleAnswer = (answer, correctAnswer, index) => {
-        if (selectedAnswers[index]) return
+    const handleAnswer = (answer, correctAnswer, question) => {
+        if (selectedAnswers[question]) return
         const isCorrect = triviaLogic(answer, correctAnswer)
-        setSelectedAnswers(prev => ({ ...prev, [index]: { answer, isCorrect } }))
+        setSelectedAnswers(prev => ({ ...prev, [question]: { answer, isCorrect } }))
     }
 
 
     const decode = (str) => {
         const txt = document.createElement('textarea')
         txt.innerHTML = str
+        console.log(txt.value)
         return txt.value
     }
 
@@ -57,10 +60,10 @@ function HomePage() {
                                     {shuffledAnswers[index].map((answer, i) => (
                                         <button
                                             key={i}
-                                            onClick={() => handleAnswer(answer, q.correct_answer, index)}
+                                            onClick={() => handleAnswer(answer, q.correct_answer, q.question)}
                                             style={{
-                                                backgroundColor: selectedAnswers[index]?.answer === answer
-                                                    ? selectedAnswers[index]?.isCorrect ? 'green' : 'red'
+                                                backgroundColor: selectedAnswers[q.question]?.answer === answer
+                                                    ? selectedAnswers[q.question]?.isCorrect ? 'green' : 'red'
                                                     : ''
                                             }}>{decode(answer)}</button>
                                     ))}

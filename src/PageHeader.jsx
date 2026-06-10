@@ -9,7 +9,7 @@ function PageHeader() {
         started, setStarted,
         correctAnswerCount, setCorrectAnswerCount,
         incorrectAnswerCount, setIncorrectAnswerCount,
-        clearScore,
+        clearScore, categories,
         totalQuestions }
         = useQuiz()
 
@@ -24,7 +24,7 @@ function PageHeader() {
                         <option value='hard'>Hard</option>
                     </select>
                     <p> Number of Questions: </p>
-                    <input placeholder='number of questions' value={numberOfQuestions} onChange={(e) => setNumberOfQuestions(e.target.value)} />
+                    <input id='numberOfQuestions' placeholder='number of questions' value={numberOfQuestions} onChange={(e) => setNumberOfQuestions(e.target.value)} />
                 </div>
                 <div className='startButton'>
                     <button onClick={() => setStarted(true)}> Start Trivia! </button>
@@ -37,7 +37,7 @@ function PageHeader() {
                     <button onClick={() => {
                         clearScore()
                         window.location.reload()
-                    }}> Clear Score </button>
+                    }}> Reset </button>
                 </div>
             </div>
             <Outlet />
