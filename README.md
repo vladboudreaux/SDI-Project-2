@@ -1,16 +1,6 @@
-# React + Vite
+# Trivia Time
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Trivia Time is a Single Page Application (SPA) built in React. It is a simple Trivia game that keeps total score of your trivia session, and allows you to select from various categories and difficulties.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# How to Play
+To play the game, players should select the modifiers they would like their trivia centered around. There are currently 24 categories and 3 Difficulty levels to choose from. Players can also add a certain number of questions from different categories before attempting their exam. Leaving the default modifiers will pull in 10 questions from random categories at the "Easy" difficulty level. To reset your score and question data, simply hit Reset on the right side of the pageHeader and you'll be ready to play again! LocalStorage is enabled, so players can freely leave the page and return if they would like to pick up a previous session.

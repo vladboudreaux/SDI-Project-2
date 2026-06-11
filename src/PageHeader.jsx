@@ -17,21 +17,28 @@ function PageHeader() {
         <>
             <div className='pageHeader'>
                 <div className='modifiers'>
-                    <label htmlFor='selectDifficulty'> Select Difficulty: </label>
-                    <select name='selectDifficulty' id='selectDifficulty' value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
-                        <option value='easy'>Easy</option>
-                        <option value='medium'>Medium</option>
-                        <option value='hard'>Hard</option>
-                    </select>
-                    <label htmlFor='selectCategory'> Select Category: </label>
-                    <select name='selectCategory' id='selectCategory' value={category} onChange={(e) => setCategory(e.target.value)}>
-                        <option value=''>Any Category</option>
-                        {categories.map(cat => (
-                            <option key={cat.id} value={cat.id}>{cat.name}</option>
-                        ))}
-                    </select>
-                    <p> Number of Questions: </p>
-                    <input id='numberOfQuestions' placeholder='number of questions' value={numberOfQuestions} onChange={(e) => setNumberOfQuestions(e.target.value)} />
+                    <div>
+                        <label htmlFor='selectDifficulty'> Select Difficulty: </label>
+                        <select name='selectDifficulty' id='selectDifficulty' value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+                            <option value='easy'>Easy</option>
+                            <option value='medium'>Medium</option>
+                            <option value='hard'>Hard</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor='selectCategory'> Select Category: </label>
+                        <select className='selectCategory' name='selectCategory' id='selectCategory' value={category} onChange={(e) => setCategory(e.target.value)}>
+                            <option value=''>Any Category</option>
+                            {categories.map(cat => (
+                                <option key={cat.id} value={cat.id}>{cat.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+
+                        <label htmlFor='numberOfQuestions'> Number of Questions: </label>
+                        <input id='numberOfQuestions' placeholder='number of questions' value={numberOfQuestions} onChange={(e) => setNumberOfQuestions(e.target.value)} />
+                    </div>
                 </div>
                 <div className='startButton'>
                     <button onClick={() => setStarted(true)}> Start Trivia! </button>
