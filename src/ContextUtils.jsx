@@ -10,6 +10,7 @@ export function QuizProvider({ children }) {
     const [difficulty, setDifficulty] = useState('easy')
     const [numberOfQuestions, setNumberOfQuestions] = useState(10)
     const [started, setStarted] = useState(false)
+    const [category, setCategory] = useState('')
 
     const [correctAnswerCount, setCorrectAnswerCount] = useState(
         () => parseInt(localStorage.getItem('correctAnswerCount')) || 0
@@ -90,7 +91,8 @@ export function QuizProvider({ children }) {
             totalQuestions, setTotalQuestions,
             questions, setQuestions,
             selectedAnswers, setSelectedAnswers,
-            shuffledAnswers, setShuffledAnswers
+            shuffledAnswers, setShuffledAnswers,
+            category, setCategory
         }}>
             {children}
         </QuizContext.Provider>
@@ -202,3 +204,5 @@ export const categories = [
         "name": "Entertainment: Cartoon & Animations"
     }
 ]
+
+

@@ -8,9 +8,9 @@ function HomePage() {
         difficulty, numberOfQuestions, started, setStarted,
         triviaLogic, setTotalQuestions, questions,
         setQuestions, selectedAnswers, setSelectedAnswers,
-        shuffledAnswers, setShuffledAnswers } = useQuiz()
+        shuffledAnswers, setShuffledAnswers, category, } = useQuiz()
 
-    const url = `https://opentdb.com/api.php?amount=${numberOfQuestions}&difficulty=${difficulty}`
+    const url = `https://opentdb.com/api.php?amount=${numberOfQuestions}&difficulty=${difficulty}${category ? `&category=${category}` : ''}`
 
 
 
