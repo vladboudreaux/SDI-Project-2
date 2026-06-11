@@ -8,7 +8,7 @@ export function useQuiz() {
 
 export function QuizProvider({ children }) {
     const [difficulty, setDifficulty] = useState('easy')
-    const [numberOfQuestions, setNumberOfQuestions] = useState(10)
+    const [numberOfQuestions, setNumberOfQuestions] = useState(5)
     const [started, setStarted] = useState(false)
     const [category, setCategory] = useState('')
 
