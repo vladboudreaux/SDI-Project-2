@@ -62,9 +62,13 @@ function HomePage() {
                                             key={i}
                                             onClick={() => handleAnswer(answer, q.correct_answer, q.question)}
                                             style={{
-                                                backgroundColor: selectedAnswers[q.question]?.answer === answer
-                                                    ? selectedAnswers[q.question]?.isCorrect ? 'green' : 'red'
-                                                    : ''
+                                                backgroundColor: (() => {
+                                                    const selected = selectedAnswers[q.question]
+                                                    if (!selected) return ''
+                                                    if (answer === q.correct_answer) return 'green'
+                                                    if (selected.answer === answer) return 'red'
+                                                    return ''
+                                                })()
                                             }}>{decode(answer)}</button>
                                     ))}
                                 </div>
